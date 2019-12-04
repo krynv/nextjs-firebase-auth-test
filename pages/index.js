@@ -1,10 +1,34 @@
 import React from "react";
 import Link from "next/link";
 import Nav from "../components/nav";
-
 import { auth, firebase } from "../src/firebase";
 
 class Home extends React.Component {
+  handleSignIn = () => {
+    var provider = new firebase.auth.GoogleAuthProvider();
+
+    provider.addScope("https://www.googleapis.com/auth/contacts.readonly");
+    auth
+      .signInWithPopup(provider)
+      .then(() => {
+        alert("You are signed In");
+      })
+      .catch(err => {
+        alert("OOps something went wrong check your console");
+        console.log(err);
+      });
+  };
+  handleLogout = () => {
+    auth
+      .signOut()
+      .then(function() {
+        alert("Logout successful");
+      })
+      .catch(function(error) {
+        alert("OOps something went wrong check your console");
+        console.log(err);
+      });
+  };
   render() {
     return (
       <div>
@@ -23,8 +47,11 @@ class Home extends React.Component {
                 <p>Visit Dashboard</p>
               </a>
             </Link>
+            <button onClick={this.handleSignIn}>Sign In using google</button>
+            <button onClick={this.handleLogout}>Logout</button>
           </div>
         </div>
+
         <style jsx>{`
           .hero {
             width: 100%;
