@@ -1,6 +1,8 @@
 import React from "react";
 import Nav from "../components/nav";
 
+import withAuth from "../src/helpers/withAuth";
+
 class Dashboard extends React.Component {
   render() {
     return (
@@ -13,4 +15,4 @@ class Dashboard extends React.Component {
   }
 }
 
-export default Dashboard;
+export default withAuth(Dashboard);
