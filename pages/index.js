@@ -2,7 +2,7 @@ import React from "react";
 import Link from "next/link";
 import Nav from "../components/nav";
 
-// import { auth, firebase } from "../src/firebase";
+import { auth, firebase } from "../src/firebase";
 
 class Home extends React.Component {
   render() {
